@@ -98,6 +98,15 @@ form button {
   cursor: pointer;
 }
 
+button {
+  padding: 0.5em 1em;
+  border: none;
+  background-color: #003366;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 form button:hover {
   background-color: #00224e;
 }
@@ -125,4 +134,48 @@ header::after {
   content: '';
   display: table;
   clear: both;
+}
+
+/* Modal styles */
+.modal {
+  background-color: white;
+  padding: 2em;
+  max-width: 500px;
+  margin: auto;
+  border-radius: 10px;
+  position: relative;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.modal h2 {
+  margin-top: 0;
+}
+
+.modal button {
+  margin-top: 1em;
+}
+
+/* Adjust form styles inside modal */
+.modal form div {
+  margin-bottom: 1em;
+}
+
+.modal form label {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.modal form input,
+.modal form textarea {
+  width: 100%;
+  padding: 0.5em;
+  box-sizing: border-box;
 }

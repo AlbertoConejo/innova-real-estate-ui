@@ -15,12 +15,7 @@ function Header() {
               <li>
                 <Link to="/">Home</Link>
               </li>
-              <li>
-                <Link to="/about">About Us</Link>
-              </li>
-              <li>
-                <Link to="/contact">Contact</Link>
-              </li>
+              {/* Other authenticated links */}
             </>
           )}
         </ul>
@@ -32,9 +27,14 @@ function Header() {
             <button onClick={logout}>Logout</button>
           </>
         ) : (
-          <Link to="/login">
-            <button>Login</button>
-          </Link>
+          <>
+            <Link to="/login">
+              <button>Login</button>
+            </Link>
+            <Link to="/register">
+              <button>Register</button>
+            </Link>
+          </>
         )}
       </div>
     </header>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function PropertyCard({ property, isAdmin, deleteProperty, setEditingProperty }) {
+function PropertyCard({ property, isAdmin, deleteProperty, handleEditClick }) {
   return (
     <div className="property-card">
       <img src={property.image} alt={property.title} />
@@ -13,7 +13,7 @@ function PropertyCard({ property, isAdmin, deleteProperty, setEditingProperty })
       )}
       {isAdmin && (
         <div className="admin-actions">
-          <button onClick={() => setEditingProperty(property)}>Edit</button>
+          <button onClick={() => handleEditClick(property)}>Edit</button>
           <button onClick={() => deleteProperty(property.id)}>Delete</button>
         </div>
       )}

@@ -3,11 +3,16 @@ import { AuthContext } from '../context/AuthContext';
 import PropertyCard from '../components/PropertyCard';
 import PropertyForm from '../components/PropertyForm';
 import axios from 'axios';
+import Modal from 'react-modal';
+
+// Set the app element for accessibility
+Modal.setAppElement('#root');
 
 function Home() {
   const { user } = useContext(AuthContext);
   const [properties, setProperties] = useState([]);
   const [editingProperty, setEditingProperty] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -42,7 +47,7 @@ function Home() {
     try {
       await axios.put(`https://localhost:44345/api/Properties/${property.id}`, property);
       fetchProperties();
-      setEditingProperty(null);
+      closeModal();
     } catch (error) {
       console.error('Error updating property:', error);
     }
@@ -55,6 +60,25 @@ function Home() {
     } catch (error) {
       console.error('Error deleting property:', error);
     }
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setEditingProperty(null);
+    setIsModalOpen(false);
+  };
+
+  const handleAddClick = () => {
+    setEditingProperty(null); // Reset any editing property
+    openModal();
+  };
+
+  const handleEditClick = (property) => {
+    setEditingProperty(property);
+    openModal();
   };
 
   if (loading) {
@@ -70,15 +94,10 @@ function Home() {
       <h2>Featured Properties</h2>
       {user && user.role === 'admin' && (
         <div>
-          <h3>{editingProperty ? 'Edit Property' : 'Add New Property'}</h3>
-          <PropertyForm
-            addProperty={addProperty}
-            updateProperty={updateProperty}
-            editingProperty={editingProperty}
-            setEditingProperty={setEditingProperty}
-          />
+          <button onClick={handleAddClick}>Add New Property</button>
         </div>
       )}
+
       <div className="property-list">
         {properties.map((property) => (
           <PropertyCard
@@ -86,10 +105,30 @@ function Home() {
             property={property}
             isAdmin={user && user.role === 'admin'}
             deleteProperty={deleteProperty}
-            setEditingProperty={setEditingProperty}
+            handleEditClick={handleEditClick}
           />
         ))}
       </div>
+
+      {/* Modal for Add/Edit Property */}
+      {user && user.role === 'admin' && (
+        <Modal
+          isOpen={isModalOpen}
+          onRequestClose={closeModal}
+          contentLabel={editingProperty ? 'Edit Property' : 'Add New Property'}
+          className="modal"
+          overlayClassName="overlay"
+        >
+          <h2>{editingProperty ? 'Edit Property' : 'Add New Property'}</h2>
+          <PropertyForm
+            addProperty={addProperty}
+            updateProperty={updateProperty}
+            editingProperty={editingProperty}
+            closeModal={closeModal}
+          />
+          <button onClick={closeModal}>Close</button>
+        </Modal>
+      )}
     </div>
   );
 }

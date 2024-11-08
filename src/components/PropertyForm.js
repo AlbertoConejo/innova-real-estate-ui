@@ -4,7 +4,7 @@ function PropertyForm({
   addProperty,
   updateProperty,
   editingProperty,
-  setEditingProperty,
+  closeModal,
 }) {
   const [property, setProperty] = useState({
     image: '',
@@ -39,7 +39,7 @@ function PropertyForm({
       description: '',
       tourLink: '',
     });
-    setEditingProperty(null);
+    closeModal();
   };
 
   return (
@@ -83,11 +83,6 @@ function PropertyForm({
         />
       </div>
       <button type="submit">{editingProperty ? 'Update' : 'Add'} Property</button>
-      {editingProperty && (
-        <button type="button" onClick={() => setEditingProperty(null)}>
-          Cancel
-        </button>
-      )}
     </form>
   );
 }

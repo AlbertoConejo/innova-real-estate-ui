@@ -8,10 +8,9 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Login from './pages/Login';
+import Register from './pages/Register';
 import Unauthorized from './pages/Unauthorized';
- 
 import './App.css';
-
 
 function App() {
   return (
@@ -21,6 +20,7 @@ function App() {
         <main>
           <Routes>
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} /> {/* New route */}
             <Route path="/unauthorized" element={<Unauthorized />} />
             <Route
               path="/"
