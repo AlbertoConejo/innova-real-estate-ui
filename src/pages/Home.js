@@ -19,7 +19,7 @@ function Home() {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.get('http://localhost:44345/api/Properties');
+      const response = await axios.get('https://localhost:44345/api/Properties');
       setProperties(response.data);
     } catch (error) {
       setError('Error fetching properties');
@@ -31,7 +31,7 @@ function Home() {
 
   const addProperty = async (property) => {
     try {
-      await axios.post('http://localhost:44345/api/Properties', property);
+      await axios.post('https://localhost:44345/api/Properties', property);
       fetchProperties();
     } catch (error) {
       console.error('Error adding property:', error);
@@ -40,7 +40,7 @@ function Home() {
 
   const updateProperty = async (property) => {
     try {
-      await axios.put(`http://localhost:44345/api/Properties/${property.id}`, property);
+      await axios.put(`https://localhost:44345/api/Properties/${property.id}`, property);
       fetchProperties();
       setEditingProperty(null);
     } catch (error) {
@@ -50,7 +50,7 @@ function Home() {
 
   const deleteProperty = async (id) => {
     try {
-      await axios.delete(`http://localhost:44345/api/Properties/${id}`);
+      await axios.delete(`https://localhost:44345/api/Properties/${id}`);
       fetchProperties();
     } catch (error) {
       console.error('Error deleting property:', error);
