@@ -94,7 +94,7 @@ function Home() {
       <h2>Featured Properties</h2>
       {user && user.role === 'admin' && (
         <div>
-          <button onClick={handleAddClick}>Add New Property</button>
+          <button className='btn-add' onClick={handleAddClick}>Add New Property</button>
         </div>
       )}
 
