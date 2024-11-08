@@ -1,30 +1,57 @@
-import React, { useContext } from 'react';
-import { ThemeProvider, ThemeContext } from './context/ThemeContext';
-import Counter from './components/Counter';
-import InputFocus from './components/InputFocus';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Home from './pages/Home';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Login from './pages/Login';
+import Unauthorized from './pages/Unauthorized';
+ 
+import './App.css';
 
-const App = () => {
-  const { isDarkTheme, toggleTheme } = useContext(ThemeContext);
-  
-  // Alert when `useContext` hook is used
- // alert("useContext Hook Triggered");
 
+function App() {
   return (
-    <div style={{ backgroundColor: isDarkTheme ? '#333' : '#fff', color: isDarkTheme ? '#fff' : '#000', padding: '20px' }}>
-      <h1>React Hooks Example</h1>
-      <button onClick={toggleTheme}>
-        Toggle to {isDarkTheme ? 'Light' : 'Dark'} Theme
-      </button>
-      <Counter />
-      <InputFocus />
-    </div>
+    <AuthProvider>
+      <Router>
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/unauthorized" element={<Unauthorized />} />
+            <Route
+              path="/"
+              element={
+                <ProtectedRoute>
+                  <Home />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/about"
+              element={
+                <ProtectedRoute>
+                  <About />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/contact"
+              element={
+                <ProtectedRoute>
+                  <Contact />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </main>
+        <Footer />
+      </Router>
+    </AuthProvider>
   );
-};
+}
 
-const Root = () => (
-  <ThemeProvider>
-    <App />
-  </ThemeProvider>
-);
-
-export default Root;
+export default App;
