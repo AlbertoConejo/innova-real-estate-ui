@@ -28,7 +28,8 @@ function Register() {
   };
 
   return (
-    <div>
+    <div className="login-container">
+      <div className="login-form">
       <h2>Register</h2>
       <form onSubmit={handleSubmit}>
         {error && <p style={{ color: 'red' }}>{error}</p>}
@@ -66,6 +67,7 @@ function Register() {
       <p>
         Already have an account? <a href="/login">Login here</a>.
       </p>
+    </div>
     </div>
   );
 }

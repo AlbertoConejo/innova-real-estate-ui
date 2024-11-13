@@ -1,84 +1,154 @@
-/* Center the login form vertically and horizontally */
+/* Modern Login Form Styles */
+
+/* Container with gradient background */
 .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 80vh;
-  }
-  
-  /* Style the form container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 1rem;
+}
+
+/* Form container with improved shadow and animation */
+.login-form {
+  width: 100%;
+  max-width: 500px;
+  padding: 2.5em;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Heading styles */
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 1.5em;
+  color: #2c3e50;
+  font-size: 1.8em;
+  font-weight: 600;
+}
+
+/* Form group with improved spacing */
+.form-group {
+  margin-bottom: 1.5em;
+  position: relative;
+}
+
+/* Enhanced label styles */
+.form-group label {
+  display: block;
+  margin-bottom: 0.7em;
+  font-weight: 500;
+  color: #4a5568;
+  font-size: 0.95em;
+}
+
+/* Modern input field styles */
+.input-field {
+  width: 100%;
+  padding: 0.8em 1em;
+  box-sizing: border-box;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1em;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.input-field:focus {
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
+}
+
+.input-field::placeholder {
+  color: #a0aec0;
+}
+
+/* Enhanced button styles */
+.login-button {
+  width: 100%;
+  padding: 1em;
+  background-color: #4299e1;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 500;
+  margin-top: 1.5em;
+  transition: all 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #3182ce;
+  transform: translateY(-1px);
+}
+
+.login-button:active {
+  transform: translateY(1px);
+}
+
+/* Improved error message styling */
+.error {
+  color: #e53e3e;
+  margin-bottom: 1em;
+  text-align: center;
+  padding: 0.5em;
+  border-radius: 6px;
+  background-color: #fff5f5;
+  border: 1px solid #feb2b2;
+  font-size: 0.9em;
+}
+
+/* Enhanced link styles */
+.login-form p {
+  text-align: center;
+  margin-top: 1.5em;
+  color: #4a5568;
+}
+
+.login-form a {
+  color: #4299e1;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.login-form a:hover {
+  color: #3182ce;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
   .login-form {
-    width: 100%;
-    max-width: 400px; /* Adjust the max-width as needed */
-    padding: 2em;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #f9f9f9;
+    padding: 1.5em;
   }
-  
-  /* Style the form headings */
+
   .login-form h2 {
-    text-align: center;
-    margin-bottom: 1em;
+    font-size: 1.5em;
   }
-  
-  /* Style the form groups */
-  .form-group {
-    margin-bottom: 1em;
-  }
-  
-  /* Style the labels */
-  .form-group label {
-    display: block;
-    margin-bottom: 0.5em;
-    font-weight: bold;
-  }
-  
-  /* Style the input fields */
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .login-form,
+  .login-button,
   .input-field {
-    width: 100%;
-    padding: 0.5em;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    transition: none;
   }
-  
-  /* Style the login button */
-  .login-button {
-    width: 100%;
-    padding: 0.75em;
-    background-color: #003366;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-    margin-top: 1em;
-  }
-  
-  /* Button hover effect */
-  .login-button:hover {
-    background-color: #00224e;
-  }
-  
-  /* Style the error message */
-  .error {
-    color: red;
-    margin-bottom: 1em;
-    text-align: center;
-  }
-  
-  /* Style the register link */
-  .login-form p {
-    text-align: center;
-    margin-top: 1em;
-  }
-  
-  .login-form a {
-    color: #003366;
-    text-decoration: none;
-  }
-  
-  .login-form a:hover {
-    text-decoration: underline;
-  }
+}
+
+/* Focus visible styles for better keyboard navigation */
+.login-button:focus-visible,
+.input-field:focus-visible,
+.login-form a:focus-visible {
+  outline: 2px solid #4299e1;
+  outline-offset: 2px;
+}
