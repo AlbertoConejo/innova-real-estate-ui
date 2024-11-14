@@ -12,9 +12,9 @@ function Header() {
       <div className="header-container">
         <div className="logo-container">
           <Link to="/">
-            <img src={logo} alt="Innova Real Estate Logo" className="logo" />
+            {/*<img src={logo} alt="Innova Real Estate Logo" className="logo" />*/}
           </Link>
-          <h1>Innova Real Estate</h1>
+          {/*<h1>Innova Real Estate</h1>*/}
         </div>
         <nav>
           <ul className="nav-links">
@@ -37,7 +37,7 @@ function Header() {
         <div className="auth-buttons">
           {user ? (
             <>
-              <span>Welcome, {user.username}!</span>
+              <span> {user.username}</span>
               <button onClick={logout} className="logout-button">Logout</button>
             </>
           ) : (
